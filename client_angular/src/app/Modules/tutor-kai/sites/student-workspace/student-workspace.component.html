@@ -1,0 +1,19 @@
+<div class="container mx-auto px-4">
+
+  <div class="max-w-screen-xl mx-auto my-4">
+
+    <!-- Main Grid mit 12 Spalten (jede Hälfte 6 Spalten) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-2">
+
+      <!-- Rechtes Grid: Code-Editor -->
+      <div class="col-span-1 lg:col-span-6">
+        <mat-tab-group dynamicHeight animationDuration="0ms">
+          <mat-tab label="test.py">
+            <ng-template matTabContent>
+              <app-code-editor [selectedLanguage]="selectedLanguage" [(code)]="code" ></app-code-editor>
+            </ng-template>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+  </div>
+</div>

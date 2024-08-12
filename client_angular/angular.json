@@ -1,0 +1,151 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "client_angular": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "customWebpackConfig": {
+              "path": "./custom-webpack.config.js"
+            },
+            "outputPath": "dist/client_angular",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              { "glob": "**/*", "input": "node_modules/monaco-editor/", "output": "/assets/monaco/" },
+              { "glob": "**/*", "input": "node_modules/@codingame/monaco-vscode-theme-defaults-default-extension/resources/", "output": "/assets/codingame/monaco-vscode-theme-defaults-default-extension/" },
+              { "glob": "**/*", "input": "node_modules/@codingame/monaco-vscode-python-default-extension/resources/", "output": "/assets/codingame/monaco-vscode-python-default-extension/" },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/monaco-editor-wrapper/dist",
+                "output": "assets/monaco-editor-wrapper/dist"
+              },
+              "src/favicon.ico",
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/ngx-extended-pdf-viewer/assets/",
+                "output": "/assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/tinymce",
+                "output": "/tinymce/"
+              }
+            ],
+            "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.scss",
+              "src/styles/sprotty-styles.scss",
+              "src/styles/highlightThemes/nord.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "src/assets/prism-ghcolors.css"
+            ], 
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules"
+              ]
+            },
+            "scripts": [
+              "node_modules/markdown-it-footnote/dist/markdown-it-footnote.min.js",
+              "node_modules/tinymce/tinymce.min.js",
+              "node_modules/marked/marked.min.js",
+              "node_modules/prismjs/prism.js",
+              "node_modules/prismjs/components/prism-csharp.min.js",
+              "node_modules/prismjs/components/prism-css.min.js",
+              "node_modules/prismjs/components/prism-java.min.js",
+              "node_modules/prismjs/components/prism-python.min.js",
+              "node_modules/prismjs/components/prism-javascript.min.js",
+              "node_modules/prismjs/components/prism-typescript.min.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "vscode-jsonrpc",
+              "vscode-languageclient",
+              "vscode-languageserver-protocol",
+              "vscode-semver",
+              "vscode-oniguruma",
+              "vscode-textmate",
+              "vscode-marked"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "buildOptimizer": true,
+              "aot": true,
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "vendorChunk": false,
+              "extractLicenses": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "2mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "aot": false,
+              "optimization": false,
+              "outputHashing": "none",
+              "sourceMap": true,
+              "namedChunks": true,
+              "vendorChunk": true,
+              "extractLicenses": false
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-builders/custom-webpack:dev-server",
+          "options": {
+            "browserTarget": "client_angular:build:development"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "client_angular:build:production"
+            },
+            "development": {
+              "browserTarget": "client_angular:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "client_angular:build"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
+}
