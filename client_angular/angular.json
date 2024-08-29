@@ -32,6 +32,7 @@
               { "glob": "**/*", "input": "node_modules/monaco-editor/", "output": "/assets/monaco/" },
               { "glob": "**/*", "input": "node_modules/@codingame/monaco-vscode-theme-defaults-default-extension/resources/", "output": "/assets/codingame/monaco-vscode-theme-defaults-default-extension/" },
               { "glob": "**/*", "input": "node_modules/@codingame/monaco-vscode-python-default-extension/resources/", "output": "/assets/codingame/monaco-vscode-python-default-extension/" },
+              { "glob": "**/*", "input": "node_modules/@codingame/monaco-vscode-cpp-default-extension/resources/", "output": "/assets/codingame/monaco-vscode-cpp-default-extension/" },
               {
                 "glob": "**/*",
                 "input": "./node_modules/monaco-editor-wrapper/dist",

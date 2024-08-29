@@ -30,7 +30,7 @@ export class StudentWorkspaceComponent implements OnInit {
   @ViewChild('codeEditorMonaco') codeEditorComponent?: CodeEditorComponent; // we get access to the codeEditorComponent and can call its methods
 
   currentState: States = States.startState;
-  selectedLanguage: string = 'python';
+  selectedLanguage: string = 'cpp';
   currentTask: any;
   currentTaskId: number = 0;
   tasks: any = [];

@@ -4,7 +4,7 @@ import { EditorStateService } from '../../services/editor-state.service';
 import { CodeEditorService } from '../../services/code-editor.service';
 import { MonacoEditorLanguageClientWrapper, UserConfig} from 'monaco-editor-wrapper';
 import { Subscription, interval } from 'rxjs';
-import { createUserConfigPython } from '../../services/code-editor-config.service';
+import { createUserConfigCpp, createUserConfigPython } from '../../services/code-editor-config.service';
 import { getWrapper, startEditor, swapEditors } from 'monaco-languageclient-examples';
 import { useWorkerFactory } from 'monaco-editor-wrapper/workerFactory';
 
@@ -164,6 +164,9 @@ export class CodeEditorComponent {
     } else if (this.selectedLanguage === 'java') {
       // TODO: Add Java language support
       console.warn('Java language support is not yet implemented.');
+    } else if (this.selectedLanguage === 'cpp') {
+      // Configure the language server and editor for C++ language
+      return createUserConfigCpp(code, codeOriginal, this.useLanguageServer, this.editorOptions);
     }
   }
 

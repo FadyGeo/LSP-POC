@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
     "@codingame/monaco-vscode-api": "~3.2.3",
+    "@codingame/monaco-vscode-cpp-default-extension": "^8.0.4",
     "@codingame/monaco-vscode-languages-service-override": "~3.2.3",
     "@codingame/monaco-vscode-model-service-override": "~3.2.3",
     "@codingame/monaco-vscode-python-default-extension": "~3.2.3",
